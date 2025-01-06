@@ -293,6 +293,32 @@ class MatchTest {
             assertEquals("Player A wins the game", scores.getLast());
 
         }
+
+        @DisplayName("Given a new match with 2 players A and B, when input is ABBBAAABAA - with a comeback from " +
+                "player A")
+        @Test
+        void testComebackFromPlayerA() {
+
+            var playerA = new Player('A');
+            var playerB = new Player('B');
+
+            var match = new Match(playerA, playerB);
+
+            String input = "ABBBAAABAA";
+            List<String> scores = match.play(input);
+
+            assertEquals(input.length(), scores.size());
+            assertEquals("Player A : 15 / Player B : 0", scores.getFirst());
+            assertEquals("Player A : 15 / Player B : 15", scores.get(1));
+            assertEquals("Player A : 15 / Player B : 30", scores.get(2));
+            assertEquals("Player A : 15 / Player B : 40", scores.get(3));
+            assertEquals("Player A : 30 / Player B : 40", scores.get(4));
+            assertEquals("Players are deuce", scores.get(5));
+            assertEquals("Player A has advantage", scores.get(6));
+            assertEquals("Players are deuce", scores.get(7));
+            assertEquals("Player A has advantage", scores.get(8));
+            assertEquals("Player A wins the game", scores.getLast());
+        }
     }
 
 

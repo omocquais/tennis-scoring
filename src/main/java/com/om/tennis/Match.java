@@ -43,7 +43,7 @@ public class Match {
             Player opponentPlayer = getOpponentPlayer(playerName);
 
             // Special case
-            if (Point.FORTY == opponentPlayer.getScore()) {
+            if ((Point.FORTY == opponentPlayer.getScore() && currentPlayer.getScore() == Point.THIRTY)  ||  Point.ADVANTAGE == opponentPlayer.getScore()) {
                 setScoresToDeuce();
                 output.add("Players are deuce");
             } else {
